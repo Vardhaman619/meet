@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Meet Link</title>
+  <style>
+    #meet-link {
+      font-family: monospace;
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Meet With Vardhaman</h1>
+  <p>Wait for 2 minutes</p>
+  <div id="meet-link"></div>
+  <button id="copy-button" disabled>Copy Link</button>
+
+  <script>
+    const meetLinkElement = document.getElementById('meet-link');
+    const copyButton = document.getElementById('copy-button');
+
+    function generateMeetLink() {
+      // Replace with your actual logic to generate a Google Meet link
+      const link = "https://dub.sh/ftxPcLX";
+      meetLinkElement.textContent = link;
+      meetLinkElement.style.display = "block";
+      copyButton.disabled = false;
+    }
+
+    function copyLink() {
+      const linkText = meetLinkElement.textContent;
+      navigator.clipboard.writeText(linkText).then(() => {
+        alert("Link copied to clipboard!");
+      }, () => {
+        alert("Failed to copy link!");
+      });
+    }
+
+    copyButton.addEventListener('click', copyLink);
+
+    // Set timeout to display link after 2 minutes (120 seconds)
+    setTimeout(generateMeetLink, 1500);
+  </script>
+</body>
+</html>
